@@ -2,7 +2,7 @@
 #include "user.h"
 #include <stdint.h>
 
-void child_helper(int read_fd, int write_fd) __attribute__((noreturn));
+void child_helper(int read_fd) __attribute__((noreturn));
 
 
 int main(int argc,  char *argv[]) {
@@ -19,16 +19,18 @@ int main(int argc,  char *argv[]) {
             write(p[1], &j, sizeof(uint32_t));
         }
         close(p[1]);
-        wait(&pid);
+
+        int ignored;
+        wait(&ignored);
     } else {
-        child_helper(p[0], p[1]);
+        close(p[1]);
+        child_helper(p[0]);
     }
 
     exit(0);
 }
 
-void child_helper(int read_fd, int write_fd) {
-    close(write_fd); 
+void child_helper(int read_fd) {
     uint32_t divisor;
     read(read_fd, &divisor, sizeof(uint32_t));
     printf("%d\n", divisor);
@@ -55,14 +57,17 @@ void child_helper(int read_fd, int write_fd) {
     int pid = fork();
     if (pid > 0) {
         close(p2[0]);
-        for (uint32_t i = 0; i <= j; i++) {
+        for (uint32_t i = 0; i < j; i++) {
             uint32_t val = nums[i];
             write(p2[1], &val, sizeof(uint32_t));
         }
         close(p2[1]);
-        wait(&pid);
+
+        int ignored;
+        wait(&ignored);
     } else {
-        child_helper(p2[0], p2[1]);
+        close(p2[1]);
+        child_helper(p2[0]);
     }
 
     exit(0);
