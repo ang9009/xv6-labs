@@ -3,6 +3,7 @@
         "memlayout.h": "c",
         "spinlock.h": "c",
         "user.h": "c",
-        "types.h": "c"
+        "types.h": "c",
+        "stdint.h": "c"
     }
 }
