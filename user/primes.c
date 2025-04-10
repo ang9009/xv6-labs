@@ -35,7 +35,7 @@ void child_helper(int read_fd) {
     read(read_fd, &divisor, sizeof(uint32_t));
     printf("%d\n", divisor);
 
-    uint32_t nums[280];
+    uint32_t *nums = malloc(sizeof(uint32_t) * 280);
     int j = 0;
     uint32_t next;
     while (read(read_fd, &next, sizeof(uint32_t)) != 0) {
@@ -61,6 +61,7 @@ void child_helper(int read_fd) {
             uint32_t val = nums[i];
             write(p2[1], &val, sizeof(uint32_t));
         }
+        free(nums);
         close(p2[1]);
 
         int ignored;
