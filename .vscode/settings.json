@@ -4,6 +4,9 @@
         "spinlock.h": "c",
         "user.h": "c",
         "types.h": "c",
-        "stdint.h": "c"
+        "stdint.h": "c",
+        "fcntl.h": "c",
+        "stat.h": "c",
+        "fs.h": "c"
     }
 }
