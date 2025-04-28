@@ -30,9 +30,11 @@ int main(int argc, char* argv[]) {
     if (char_buf == ' ') {
       blanks++;
     } else if (char_buf == '\n') {
+      // Add null terminator to current argument, add to args
       arg_buf[arg_off++] = '\0';
       args[args_idx++] = last_arg_p;
-      last_arg_p = &arg_buf[arg_off];
+      last_arg_p = &arg_buf[arg_off];  // Update for next argument
+
       args[args_idx] = NULL;  // Add null terminator
       args_idx = argc - 1;    // Reset args array index
 
