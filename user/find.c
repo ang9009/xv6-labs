@@ -28,7 +28,7 @@ void find(const char* file, char* dir_path) {
   int fd;
   struct stat st;
   if ((fd = open(dir_path, O_RDONLY)) < 0) {
-    fprintf(2, "find: failed to open open %s\n", dir_path);
+    fprintf(2, "find: failed to open %s\n", dir_path);
     return;
   }
 
@@ -39,7 +39,7 @@ void find(const char* file, char* dir_path) {
   }
 
   if (st.type == T_FILE || st.type == T_DEVICE) {
-    fprintf(2, "find: somehow navigated into file");
+    fprintf(2, "find: somehow navigated into file\n");
     close(fd);
     return;
   }

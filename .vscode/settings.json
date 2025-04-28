@@ -7,6 +7,10 @@
         "stdint.h": "c",
         "fcntl.h": "c",
         "stat.h": "c",
-        "fs.h": "c"
+        "fs.h": "c",
+        "cstdlib": "c",
+        "param.h": "c",
+        "stdbool.h": "c",
+        "stddef.h": "c"
     }
 }

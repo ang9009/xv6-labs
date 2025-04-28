@@ -4,7 +4,7 @@
 
 void child_helper(int read_fd) __attribute__((noreturn));
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
   int p[2];
   if (pipe(p) == -1) {
     fprintf(2, "Pipe failed\n");
@@ -34,7 +34,7 @@ void child_helper(int read_fd) {
   read(read_fd, &divisor, sizeof(uint32_t));
   printf("prime %d\n", divisor);
 
-  uint32_t *nums = malloc(sizeof(uint32_t) * 280);
+  uint32_t* nums = malloc(sizeof(uint32_t) * 280);
   int j = 0;
   uint32_t next;
   while (read(read_fd, &next, sizeof(uint32_t)) != 0) {
@@ -44,7 +44,7 @@ void child_helper(int read_fd) {
   }
   close(read_fd);
 
-  if (j == 0) { // No more primes, complete
+  if (j == 0) {  // No more primes, complete
     exit(0);
   }
 
