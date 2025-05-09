@@ -11,6 +11,11 @@
         "cstdlib": "c",
         "param.h": "c",
         "stdbool.h": "c",
-        "stddef.h": "c"
+        "stddef.h": "c",
+        "date.h": "c",
+        "proc.h": "c",
+        "defs.h": "c",
+        "riscv.h": "c",
+        "syscall.h": "c"
     }
 }
